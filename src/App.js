@@ -5,10 +5,12 @@ import Listings from './components/Listings';
 const SHOW_CART = false;
 
 function App() {
+  const [showCart, setShowCart] = useState(SHOW_CART)
   const [inCart, setCart] = useState([])
 
   function handleGoToCart(){
     console.log("goto cart")
+    setShowCart(!showCart)
   }
 
   function getCartTotal(){
@@ -27,8 +29,8 @@ function App() {
         Maxwellly's Scuffed Pokémon e-commerse site
         <button onClick={handleGoToCart}> Shopping Cart ({getCartTotal()})</button>
       </header>
-        <Listings trigger={updateCart}/>
-        {SHOW_CART && <Cart/>}
+        {!showCart &&<Listings trigger={updateCart}/>}
+        {showCart && <Cart trigger={setShowCart} items={[...inCart]}/>}
     </div>
   );
 }
