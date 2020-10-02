@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Cart from './components/Cart';
+import Listings from './components/Listings';
+
+const SHOW_CART = false;
 
 function App() {
+  const [inCart, setCart] = useState([])
+
+  function handleGoToCart(){
+    console.log("goto cart")
+  }
+
+  function getCartTotal(){
+    return inCart.length
+  }
+
+  function updateCart(item){
+    console.log("updateCart")
+    console.log(item)
+    setCart([...inCart, item])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Maxwellly's Scuffed Pokémon e-commerse site
+        <button onClick={handleGoToCart}> Shopping Cart ({getCartTotal()})</button>
       </header>
+        <Listings trigger={updateCart}/>
+        {SHOW_CART && <Cart/>}
     </div>
   );
 }
