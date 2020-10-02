@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Cart from './components/Cart';
 import Listings from './components/Listings';
+import amity from './oamity.png'
 
 const SHOW_CART = false;
 
@@ -25,8 +26,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        Maxwellly's Scuffed Pokémon e-commerse site
+      <header style={{fontWeight: 'bold'}} className="App-header">
+        <img src={amity}></img>
+          
+            Maxwellly's Scuffed Pokémon e-commerse site
         <button onClick={handleGoToCart}> Shopping Cart ({getCartTotal()})</button>
       </header>
         {!showCart &&<Listings trigger={updateCart}/>}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap';
-import Listing from './Listing'
 
 export default function Cart(props) {
 
@@ -34,10 +33,10 @@ export default function Cart(props) {
 
     <br/>
     total cost: {
-    props.items.map((item) => {return item.price}).reduce((a,b)=>{return a+b})
-     
-    
-    }
+    (props.items.length > 0)&&
+        props.items.map((item) => {return item.price}).reduce((a,b)=>{return a+b})
+        
+      }
   </Modal.Body>
 
   <Modal.Footer>
